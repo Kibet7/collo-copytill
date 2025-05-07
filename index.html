@@ -3,145 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service.starlink.ke</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Starlink Kenya - Internet Packages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #148122;
+            --primary-dark: #0f7b0f;
+            --secondary: #000000;
+            --accent: #0f9b0f;
+            --light: #ffffff;
+            --light-bg: #f8f8f8;
+            --text: #333333;
+            --text-light: #555555;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f9b0f, #000000);
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #fff;
+            color: var(--light);
+            line-height: 1.6;
         }
+        
         .container {
-            background-color: #ffffff;
+            background-color: var(--light);
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 450px;
-            width: 90%;
-            color: #333;
-            animation: fadeIn 0.8s ease-in-out;
+            max-width: 480px;
+            width: 95%;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
+        
         h1 {
             font-size: 28px;
-            margin-bottom: 25px;
-            color: #148122;
-            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
         }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
         .payment-info {
             margin-bottom: 25px;
             font-size: 18px;
-            font-weight: 500;
-            color: #555;
+            font-weight: 600;
+            color: var(--text-light);
             background: #e0f7da;
             padding: 12px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
+        
+        .payment-info i {
+            color: var(--primary);
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
         button {
             border: none;
             padding: 14px;
             font-size: 16px;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            margin: 12px 0;
+            margin: 0;
             width: 100%;
             font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
         }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
         button:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
         .payment-btn {
-            background: #148122;
-            color: #ffffff;
+            background: var(--primary);
+            color: var(--light);
         }
+        
         .payment-btn:hover {
-            background: #0f7b0f;
+            background: var(--primary-dark);
         }
-        .copy-btn {
-            background: #ff9800;
-            color: #fff;
-        }
-        .copy-btn:hover {
-            background: #e68900;
-        }
-        .till-info {
-            margin-top: 25px;
-            font-size: 18px;
-            color: #148122;
-            font-weight: 600;
-            background: #e0f7da;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+        
         .inquiry {
             margin-top: 25px;
             font-size: 16px;
-            color: #444;
-            background: #f8f8f8;
+            color: var(--text-light);
+            background: var(--light-bg);
             padding: 15px;
-            border-radius: 8px;
-            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
         }
+        
         .email {
-            color: #007bff;
+            color: var(--primary);
             font-weight: 600;
             text-decoration: none;
             transition: 0.3s;
         }
+        
         .email:hover {
+            color: var(--primary-dark);
             text-decoration: underline;
-            color: #0056b3;
-        }
-        .highlight {
-            color: #148122;
-            font-weight: 600;
-        }
-    </style>
-    <script>
-        function showPaymentPrompt(amount) {
-            alert(`Pay Ksh ${amount} to till 3133426`);
         }
         
-        function copyTillNumber() {
-            navigator.clipboard.writeText("3133426").then(() => {
-                alert("Till number copied!");
-            }).catch(err => {
-                alert("Failed to copy: " + err);
-            });
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
         }
-    </script>
+        
+        .social-links a {
+            color: var(--text-light);
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: var(--light);
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            color: var(--text);
+            position: relative;
+            animation: slideDown 0.4s;
+        }
+        
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .instructions {
+            text-align: left;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .instructions li::marker {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .proceed-btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .proceed-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .proceed-btn:active {
+            transform: translateY(0);
+        }
+        
+        .selected-package {
+            font-weight: 600;
+            color: var(--primary);
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(20, 129, 34, 0.1);
+            border-radius: 8px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                padding: 20px;
+            }
+        }
+        
+        /* Loading spinner */
+        .loader {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--light);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Select a Package</h1>
-        <div class="payment-info">Starlink Home <i>(Only Safaricom)</i></div>        
-        <button class="payment-btn" onclick="showPaymentPrompt(80)">24 hours - 5GB (Ksh 80)</button>
-        <button class="payment-btn" onclick="showPaymentPrompt(250)">7 Days - 10GB (Ksh 250)</button>
-        <button class="payment-btn" onclick="showPaymentPrompt(400)">21 Days - 35GB (Ksh 400)</button>      
-        <button class="payment-btn" onclick="showPaymentPrompt(600)">31 Days - Unlimited (Ksh 600)</button>
+        <div class="payment-info">
+            <i class="fas fa-wifi"></i>
+            Starlink Home <i>(Safaricom, Airtel, Telcom)</i>
+        </div>
         
-        <div class="till-info">Till Number: <strong class="highlight">3133426</strong></div>
-        <button class="copy-btn" onclick="copyTillNumber()">Copy Till</button>
+        <div class="package-grid">
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '24 Hours - 7GB (Ksh 130)')">
+                <i class="far fa-clock"></i> 24 Hours - 7GB (Ksh 130)
+            </button>
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '7 Days - 12GB (Ksh 300)')">
+                <i class="fas fa-calendar-week"></i> 7 Days - 12GB (Ksh 300)
+            </button>
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '14 Days - 22GB (Ksh 550)')">
+                <i class="fas fa-calendar-alt"></i> 14 Days - 22GB (Ksh 550)
+            </button>
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '21 Days - 35GB (Ksh 750)')">
+                <i class="fas fa-calendar-check"></i> 21 Days - 35GB (Ksh 750)
+            </button>
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '30 Days - 50GB (Ksh 900)')">
+                <i class="fas fa-calendar-day"></i> 30 Days - 50GB (Ksh 900)
+            </button>
+            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/16525439', '6 Months - Unlimited (Ksh 4000)')">
+                <i class="fas fa-calendar-plus"></i> 6 Months - Unlimited (Ksh 4000)
+            </button>
+        </div>
 
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
-            <a href="mailto:Helplinestarl@gmail.com" class="email">support@starlink.ke</a>
+            <a href="mailto:starrlinkg@gmail.com" class="email">
+                <i class="fas fa-envelope"></i> support@starlink.ke
+            </a>
+            <div class="social-links">
+                
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <hr>
+                <a href="https://wa.me/254732084000?text=Hi%2C%20I%20need%20help%20with%20the%20package" target="_blank" class="whatsapp-link">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                
+            </div>
         </div>
     </div>
+
+    <!-- Payment Instructions Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-credit-card"></i> Payment Instructions</h2>
+            <div class="selected-package" id="selectedPackage"></div>
+            <div class="instructions">
+                <p><strong>Follow these steps to complete your payment:</strong></p>
+                <ol>
+                    <li><strong>Enter amount to pay</strong> (the amount should correspond with the selected package)</li>
+                    <li><strong>In checkout page:</strong> Navigate to Mobile Money option</li>
+                    <li><strong>Enter your phone number</strong> when prompted</li>
+                    <li>Complete the payment using your mobile money PIN</li>
+                </ol>
+                <p>You will receive a confirmation message once payment is successful.</p>
+            </div>
+            <button class="proceed-btn" id="proceedBtn">
+                <i class="fas fa-arrow-right"></i> Proceed to Payment
+            </button>
+            <div class="loader" id="loader"></div>
+        </div>
+    </div>
+
+    <script>
+        let paymentUrl = '';
+        let selectedPackage = '';
+        
+        function showPaymentInstructions(url, packageName) {
+            paymentUrl = url;
+            selectedPackage = packageName;
+            
+            // Update the modal with selected package
+            document.getElementById('selectedPackage').innerHTML = 
+                `<i class="fas fa-check-circle"></i> Selected: ${packageName}`;
+            
+            // Show modal
+            const modal = document.getElementById('paymentModal');
+            modal.style.display = 'block';
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.getElementById('proceedBtn').addEventListener('click', function() {
+            const loader = document.getElementById('loader');
+            const btn = document.getElementById('proceedBtn');
+            
+            // Show loading spinner and hide button text
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+            
+            // Simulate delay for better UX (remove in production)
+            setTimeout(() => {
+                closeModal();
+                window.location.href = paymentUrl;
+            }, 1000);
+        });
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
