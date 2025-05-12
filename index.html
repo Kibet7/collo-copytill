@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink Kenya - Internet Packages</title>
+    <title>Starlink US - Internet Packages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-      <style>
+    <style>
         :root {
             --primary: #148122;
             --primary-dark: #0f7b0f;
@@ -16,6 +17,8 @@
             --light-bg: #f8f8f8;
             --text: #333333;
             --text-light: #555555;
+            --warning: #ff9800;
+            --danger: #f44336;
         }
         
         * {
@@ -277,6 +280,8 @@
             align-items: center;
             gap: 8px;
             margin-top: 10px;
+            width: 100%;
+            justify-content: center;
         }
         
         .proceed-btn:hover {
@@ -296,6 +301,47 @@
             padding: 10px;
             background: rgba(20, 129, 34, 0.1);
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .phone-input-container {
+            margin: 20px 0;
+        }
+        
+        .phone-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .phone-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(20, 129, 34, 0.2);
+        }
+        
+        .phone-input::placeholder {
+            color: #aaa;
+        }
+        
+        .important-note {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .important-note i {
+            color: var(--warning);
+            margin-right: 8px;
         }
         
         /* Animations */
@@ -329,6 +375,12 @@
                 margin: 20% auto;
                 padding: 20px;
             }
+            
+            .payment-info {
+                font-size: 16px;
+                flex-direction: column;
+                text-align: center;
+            }
         }
         
         /* Loading spinner */
@@ -347,7 +399,21 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-    </style>
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-secondary {
+            background: var(--text-light);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--text);
+        }
     </style>
 </head>
 <body>
@@ -359,98 +425,146 @@
         </div>
         
         <div class="package-grid">
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Daily Data Boost: 10GB for 24 hours - $3.00')">
+            <button class="payment-btn" onclick="showPhoneInput('Daily Data Boost: 10GB for 24 hours - $3.00')">
                 <i class="far fa-clock"></i> Daily Data Boost: 10GB for 24 hours - $3.00
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Weekend Data Pass: 25GB for 3 days - $6.99')">
+            <button class="payment-btn" onclick="showPhoneInput('Weekend Data Pass: 25GB for 3 days - $6.99')">
                 <i class="fas fa-calendar"></i> Weekend Data Pass: 25GB for 3 days - $6.99
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', '7-Day Starter: 15GB for 7 days - $2.99')">
+            <button class="payment-btn" onclick="showPhoneInput('7-Day Starter: 15GB for 7 days - $2.99')">
                 <i class="fas fa-calendar-week"></i> 7-Day Starter: 15GB for 7 days - $2.99
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Unlimited Data (15 Days): $19.99')">
+            <button class="payment-btn" onclick="showPhoneInput('Unlimited Data (15 Days): $19.99')">
                 <i class="fas fa-calendar-alt"></i> Unlimited Data (15 Days): $19.99
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Monthly Lite: 20GB for 30 days - $8.99')">
+            <button class="payment-btn" onclick="showPhoneInput('Monthly Lite: 20GB for 30 days - $8.99')">
                 <i class="fas fa-calendar-day"></i> Monthly Lite: 20GB for 30 days - $8.99
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Monthly Standard: 50GB for 30 days - $19.00')">
+            <button class="payment-btn" onclick="showPhoneInput('Monthly Standard: 50GB for 30 days - $19.00')">
                 <i class="fas fa-calendar-check"></i> Monthly Standard: 50GB for 30 days - $19.00
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Monthly Power User: 100GB for 30 days - $29.50')">
+            <button class="payment-btn" onclick="showPhoneInput('Monthly Power User: 100GB for 30 days - $29.50')">
                 <i class="fas fa-calendar-plus"></i> Monthly Power User: 100GB for 30 days - $29.50
             </button>
-            <button class="payment-btn" onclick="showPaymentInstructions('https://checkoutjpv2.jambopay.com/lipa/paybill/11266139', 'Unlimited Data (30 Days): Truly unlimited data for 30 days - $39.99')">
+            <button class="payment-btn" onclick="showPhoneInput('Unlimited Data (30 Days): Truly unlimited data for 30 days - $39.99')">
                 <i class="fas fa-infinity"></i> Unlimited Data (30 Days): Truly unlimited data for 30 days - $39.99
             </button>
         </div>
 
-        <!-- Keep the inquiry section unchanged -->
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
-            <a href="mailto:starrlinkg@gmail.com" class="email">
+            <a href="mailto:support@starlink.ke" class="email">
                 <i class="fas fa-envelope"></i> support@starlink.ke
             </a>
             <div class="social-links">
                 <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <hr>
                 <a href="https://wa.me/254104155254?text=Hi%2C%20I%20need%20help%20with%20the%20package" target="_blank" class="whatsapp-link">
-                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Keep the payment modal and scripts unchanged -->
-    <div id="paymentModal" class="modal">
-        <!-- Modal content remains the same -->
+    <!-- Phone Input Modal -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-mobile-alt"></i> Enter Your Phone Number</h2>
+            
+            <div class="selected-package" id="selectedPackage">
+                <i class="fas fa-check-circle"></i> Selected: Package Name
+            </div>
+            
+            <div class="phone-input-container">
+                <input type="tel" id="phoneNumber" class="phone-input" placeholder="Enter phone number to receive internet" required>
+                <p style="text-align: left; margin-top: 5px; font-size: 14px; color: var(--text-light);">
+                    <i class="fas fa-info-circle"></i> We'll send the internet package to this number
+                </p>
+            </div>
+            
+            <div class="instructions">
+                <h4><i class="fas fa-info-circle"></i> Important Information:</h4>
+                <div class="important-note">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Please read carefully</strong> before proceeding
+                </div>
+                
+                <ol>
+                    <li>Enter the phone number that will receive the internet package</li>
+                    <li>Ensure the number is correct and active</li>
+                    <li>You will receive a confirmation SMS within 5 minutes</li>
+                    <li>Activation may take 1-15 minutes after submission</li>
+                    <li>The internet package will be linked to this phone number</li>
+                </ol>
+                
+                <div class="important-note">
+                    <i class="fas fa-headset"></i>
+                    <strong>Need help?</strong> Contact support at support@starlink.ke or WhatsApp +254 104 155 254
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button class="proceed-btn" id="submitBtn" onclick="submitPhoneNumber()">
+                    <i class="fas fa-paper-plane"></i> Proceed to Payment
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
-        let paymentUrl = '';
         let selectedPackage = '';
         
-        function showPaymentInstructions(url, packageName) {
-            paymentUrl = url;
+        function showPhoneInput(packageName) {
             selectedPackage = packageName;
             
             // Update the modal with selected package
             document.getElementById('selectedPackage').innerHTML = 
                 `<i class="fas fa-check-circle"></i> Selected: ${packageName}`;
             
+            // Clear previous input
+            document.getElementById('phoneNumber').value = '';
+            
             // Show modal
-            const modal = document.getElementById('paymentModal');
+            const modal = document.getElementById('phoneModal');
             modal.style.display = 'block';
             
             // Prevent body scroll when modal is open
             document.body.style.overflow = 'hidden';
+            
+            // Focus on the phone input
+            document.getElementById('phoneNumber').focus();
         }
         
         function closeModal() {
-            const modal = document.getElementById('paymentModal');
+            const modal = document.getElementById('phoneModal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
         
-        document.getElementById('proceedBtn').addEventListener('click', function() {
-            const loader = document.getElementById('loader');
-            const btn = document.getElementById('proceedBtn');
+        function submitPhoneNumber() {
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const btn = document.getElementById('submitBtn');
             
-            // Show loading spinner and hide button text
+            if (!phoneNumber) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            
+            // Show loading state
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+            btn.disabled = true;
             
-            // Simulate delay for better UX (remove in production)
+            // Redirect to payment page after a short delay
             setTimeout(() => {
-                closeModal();
-                window.location.href = paymentUrl;
+                window.location.href = "https://checkoutjpv2.jambopay.com/lipa/paybill/11266139";
             }, 1000);
-        });
+        }
         
         // Close modal when clicking outside of it
         window.onclick = function(event) {
-            const modal = document.getElementById('paymentModal');
+            const modal = document.getElementById('phoneModal');
             if (event.target == modal) {
                 closeModal();
             }
@@ -462,8 +576,14 @@
                 closeModal();
             }
         });
-    </script>
         
-  
+        // Track package selection for analytics
+        document.querySelectorAll('.payment-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // You can add analytics tracking here
+                console.log('Package selected:', this.textContent.trim());
+            });
+        });
+    </script>
 </body>
-    </html>
+</html>
