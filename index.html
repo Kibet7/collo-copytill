@@ -3,587 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink US - Internet Packages</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Service.starlink.ke</title>
     <style>
-        :root {
-            --primary: #148122;
-            --primary-dark: #0f7b0f;
-            --secondary: #000000;
-            --accent: #0f9b0f;
-            --light: #ffffff;
-            --light-bg: #f8f8f8;
-            --text: #333333;
-            --text-light: #555555;
-            --warning: #ff9800;
-            --danger: #f44336;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            background: linear-gradient(135deg, #0f9b0f, #000000);
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: var(--light);
-            line-height: 1.6;
+            color: #fff;
         }
-        
         .container {
-            background-color: var(--light);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 480px;
-            width: 95%;
-            color: var(--text);
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.5s ease-out;
+            max-width: 420px;
+            width: 90%;
+            color: #333;
+            margin: 20px 0;
         }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
         h1 {
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 10px;
+            color: #148122;
         }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 3px;
-        }
-        
         .payment-info {
-            margin-bottom: 25px;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-light);
-            background: #e0f7da;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .payment-info i {
-            color: var(--primary);
-        }
-        
-        .package-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
             margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            background: #e0f7da;
+            padding: 8px;
+            border-radius: 6px;
         }
-        
         button {
             border: none;
-            padding: 14px;
+            padding: 12px;
             font-size: 16px;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            margin: 0;
+            margin: 10px 0;
             width: 100%;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-        
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        button:hover::before {
-            left: 100%;
-        }
-        
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
         }
-        
-        button:active {
-            transform: translateY(1px);
-        }
-        
         .payment-btn {
-            background: var(--primary);
-            color: var(--light);
+            background: #148122;
+            color: #ffffff;
         }
-        
         .payment-btn:hover {
-            background: var(--primary-dark);
+            background: #0f7b0f;
         }
-        
         .inquiry {
-            margin-top: 25px;
+            margin-top: 20px;
             font-size: 16px;
-            color: var(--text-light);
-            background: var(--light-bg);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            color: #444;
+            background: #f8f8f8;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
         }
-        
         .email {
-            color: var(--primary);
-            font-weight: 600;
+            color: #007bff;
+            font-weight: bold;
             text-decoration: none;
-            transition: 0.3s;
         }
-        
         .email:hover {
-            color: var(--primary-dark);
             text-decoration: underline;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            color: var(--text-light);
-            font-size: 20px;
-            transition: 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-            transform: translateY(-3px);
         }
         
         /* Modal styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 100;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
         }
-        
         .modal-content {
-            background-color: var(--light);
-            margin: 10% auto;
+            background-color: white;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            max-width: 400px;
             width: 90%;
-            max-width: 500px;
-            color: var(--text);
-            position: relative;
-            animation: slideDown 0.4s;
+            color: #333;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
-        
-        .close {
-            color: #aaa;
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
+        .close-modal {
+            float: right;
+            font-size: 24px;
             cursor: pointer;
-            transition: 0.3s;
+            color: #888;
         }
-        
-        .close:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-        
-        .instructions {
-            text-align: left;
-            margin: 20px 0;
-            line-height: 1.8;
-        }
-        
-        .instructions ol {
-            padding-left: 20px;
-        }
-        
-        .instructions li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .instructions li::marker {
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
         .proceed-btn {
-            background: var(--primary);
+            background: #148122;
             color: white;
-            padding: 12px 25px;
             border: none;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
+        }
+        .proceed-btn:hover {
+            background: #0f7b0f;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
             margin-top: 10px;
-            width: 100%;
-            justify-content: center;
         }
-        
-        .proceed-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .proceed-btn:active {
-            transform: translateY(0);
-        }
-        
-        .selected-package {
-            font-weight: 600;
-            color: var(--primary);
-            margin: 15px 0;
-            padding: 10px;
-            background: rgba(20, 129, 34, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .phone-input-container {
-            margin: 20px 0;
-        }
-        
-        .phone-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .phone-input:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(20, 129, 34, 0.2);
-        }
-        
-        .phone-input::placeholder {
-            color: #aaa;
-        }
-        
-        .important-note {
-            background-color: rgba(255, 152, 0, 0.1);
-            border-left: 4px solid var(--warning);
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .important-note i {
-            color: var(--warning);
+        .whatsapp-btn i {
             margin-right: 8px;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .modal-content {
-                margin: 20% auto;
-                padding: 20px;
-            }
-            
-            .payment-info {
-                font-size: 16px;
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        /* Loading spinner */
-        .loader {
+        /* Loading spinner styles */
+        .loading-overlay {
             display: none;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid var(--light);
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #148122;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            margin-top: 10px;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .btn-secondary {
-            background: var(--text-light);
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background: var(--text);
-        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <h1>Select a Package</h1>
-        <div class="payment-info">
-            <i class="fas fa-wifi"></i>
-            Starlink Home <i>(Verizon, AT&T, T-mobile)</i>
-        </div>
+        <div class="payment-info">Starlink Home <i>(Safaricom, Airtel, Telcom)</i></div>
         
-        <div class="package-grid">
-            <button class="payment-btn" onclick="showPhoneInput('Daily Data Boost: 10GB for 24 hours - $3.00')">
-                <i class="far fa-clock"></i> Daily Data Boost: 10GB for 24 hours - $3.00
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Weekend Data Pass: 25GB for 3 days - $6.99')">
-                <i class="fas fa-calendar"></i> Weekend Data Pass: 25GB for 3 days - $6.99
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('7-Day Starter: 15GB for 7 days - $2.99')">
-                <i class="fas fa-calendar-week"></i> 7-Day Starter: 15GB for 7 days - $2.99
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Unlimited Data (15 Days): $19.99')">
-                <i class="fas fa-calendar-alt"></i> Unlimited Data (15 Days): $12.99
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Monthly Lite: 20GB for 30 days - $8.99')">
-                <i class="fas fa-calendar-day"></i> Monthly Lite: 20GB for 30 days - $8.99
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Monthly Standard: 50GB for 30 days - $19.00')">
-                <i class="fas fa-calendar-check"></i> Monthly Standard: 50GB for 30 days - $19.00
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Monthly Power User: 100GB for 30 days - $29.50')">
-                <i class="fas fa-calendar-plus"></i> Monthly Power User: 100GB for 30 days - $29.50
-            </button>
-            <button class="payment-btn" onclick="showPhoneInput('Unlimited Data (30 Days): Truly unlimited data for 30 days - $39.99')">
-                <i class="fas fa-infinity"></i> Unlimited Data (30 Days): Truly unlimited data for 30 days - $39.99
-            </button>
-        </div>
+        <button class="payment-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 130)', 'https://short.payhero.co.ke/s/SGftDgUDRCGvxNoRP5FhFm')">24 Hours - 7GB (Ksh 130)</button>
+        <button class="payment-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 300)', 'https://short.payhero.co.ke/s/ELPgQPhyKVK4nnwQW8ZFWT')">7 Days - 12GB (Ksh 300)</button>
+        <button class="payment-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 550)', 'https://short.payhero.co.ke/s/UFHqXjAvfKnjDDqxuc6ZLj')">14 Days - 22GB (Ksh 550)</button>
+        <button class="payment-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 750)', 'https://short.payhero.co.ke/s/4fAcBtv7XAaeS9YD75EHgU')">21 Days - 35GB (Ksh 750)</button>
+        <button class="payment-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 900)', 'https://short.payhero.co.ke/s/QERZfhA4xkoRNfTmoMNbPK')">30 Days - 50GB (Ksh 900)</button>
+        <button class="payment-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 1050)', 'https://short.payhero.co.ke/s/Ru29zTDNuAL6SbYgi3ZwFL')">30 Days - Unlimited (Ksh 1050)</button>
+        <button class="payment-btn" onclick="showPaymentModal('6 Months - Unlimited (Ksh 2000)', 'https://short.payhero.co.ke/s/hZCfzeD9KqEuNyJDQ8VBdq')">6 Months - Unlimited (Ksh 2000)</button>
 
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
-            <a href="mailto:support@starlink.ke" class="email">
-                <i class="fas fa-envelope"></i> email
+            <a href="https://wa.me/254748605610?text=Hi%2C%20I%20need%20help%20with%20Starlink%20offers" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp Support
             </a>
-            <div class="social-links">
-                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/254104155254?text=Hi%2C%20I%20need%20help%20with%20the%20package" target="_blank" class="whatsapp-link">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
+            <p>or</p>
+            <a href="mailto:starrlinkg@gmail.com" class="email">starrlinkg@gmail.com</a>
         </div>
     </div>
 
-    <!-- Phone Input Modal -->
-    <div id="phoneModal" class="modal">
+    <!-- Confirmation Modal -->
+    <div id="paymentModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2><i class="fas fa-mobile-alt"></i> Enter Your Phone Number</h2>
-            
-            <div class="selected-package" id="selectedPackage">
-                <i class="fas fa-check-circle"></i> Selected: Package Name
-            </div>
-            
-            <div class="phone-input-container">
-                <input type="tel" id="phoneNumber" class="phone-input" placeholder="Enter phone number to receive internet" required>
-                <p style="text-align: left; margin-top: 5px; font-size: 14px; color: var(--text-light);">
-                    <i class="fas fa-info-circle"></i> We'll send the internet package to this number
-                </p>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> Important Information:</h4>
-                <div class="important-note">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Please read carefully</strong> before proceeding
-                </div>
-                
-                <ol>
-                    <li>Enter the phone number that will receive the internet package</li>
-                    <li>Ensure the number is correct and active</li>
-                    <li>You will receive a confirmation SMS within 5 minutes</li>
-                    <li>Activation may take 1-15 minutes after submission</li>
-                    <li>The internet package will be linked to this phone number</li>
-                </ol>
-                
-                <div class="important-note">
-                    <i class="fas fa-headset"></i>
-                    <strong>Need help?</strong> Contact support at support@starlink or WhatsApp
-                </div>
-            </div>
-            
-            <div class="btn-group">
-                <button class="proceed-btn" id="submitBtn" onclick="submitPhoneNumber()">
-                    <i class="fas fa-paper-plane"></i> Proceed to Payment
-                </button>
-            </div>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Confirm Package</h2>
+            <p>You have selected: <strong id="selectedPackage"></strong></p>
+            <button class="proceed-btn" id="proceedPaymentBtn">Proceed to Payment</button>
         </div>
+    </div>
+    
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Processing your request...</div>
     </div>
 
     <script>
-        let selectedPackage = '';
+        let paymentUrl = '';
         
-        function showPhoneInput(packageName) {
-            selectedPackage = packageName;
+        function showPaymentModal(packageName, url) {
+            paymentUrl = url;
+            document.getElementById('selectedPackage').textContent = packageName;
+            document.getElementById('paymentModal').style.display = 'flex';
             
-            // Update the modal with selected package
-            document.getElementById('selectedPackage').innerHTML = 
-                `<i class="fas fa-check-circle"></i> Selected: ${packageName}`;
-            
-            // Clear previous input
-            document.getElementById('phoneNumber').value = '';
-            
-            // Show modal
-            const modal = document.getElementById('phoneModal');
-            modal.style.display = 'block';
-            
-            // Prevent body scroll when modal is open
-            document.body.style.overflow = 'hidden';
-            
-            // Focus on the phone input
-            document.getElementById('phoneNumber').focus();
+            // Set up the proceed button
+            document.getElementById('proceedPaymentBtn').onclick = function() {
+                showLoadingAndRedirect();
+            };
         }
         
         function closeModal() {
-            const modal = document.getElementById('phoneModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.getElementById('paymentModal').style.display = 'none';
         }
         
-        function submitPhoneNumber() {
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const btn = document.getElementById('submitBtn');
+        function showLoadingAndRedirect() {
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
             
-            if (!phoneNumber) {
-                alert('Please enter a valid phone number');
-                return;
-            }
+            // Close the modal
+            closeModal();
             
-            // Show loading state
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
-            btn.disabled = true;
-            
-            // Redirect to payment page after a short delay
-            setTimeout(() => {
-                window.location.href = "https://checkoutjpv2.jambopay.com/lipa/paybill/11266139";
-            }, 1000);
+            // Redirect after a short delay to allow the loading screen to show
+            setTimeout(function() {
+                window.location.href = paymentUrl;
+            }, 1500);
         }
         
-        // Close modal when clicking outside of it
+        // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('phoneModal');
-            if (event.target == modal) {
+            if (event.target == document.getElementById('paymentModal')) {
                 closeModal();
             }
         }
-        
-        // Close with ESC key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
-        // Track package selection for analytics
-        document.querySelectorAll('.payment-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // You can add analytics tracking here
-                console.log('Package selected:', this.textContent.trim());
-            });
-        });
     </script>
 </body>
 </html>
